@@ -2,8 +2,12 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-// import WelcomeMessage from './components/WelcomeMessage';
 
+import HeaderComponent from './components/headerComponent/HeaderComponent';
+import MainHtml from './components/mainComponent/MainComponent';
+import PopexitHtml from './components/PopexitComponents/PopexitComponents';
+import PopnewHtml from './components/Popnew/PopnewComponent';
+import PopbrowsHtml from './components/PopbrowsComponents/PopbrowsComponents';
 
 
 function App() {
@@ -14,8 +18,8 @@ function App() {
   return (
     <div>
       <div className="wrapper">
-		
-			<div className="pop-exit" id="popExit">
+		<PopexitHtml />
+			{/* <div className="pop-exit" id="popExit">
 				<div className="pop-exit__container">
 					<div className="pop-exit__block">
 						<div className="pop-exit__ttl">
@@ -29,9 +33,9 @@ function App() {
 						</form>
 					</div>
 				</div>
-			</div>
-
-			<div className="pop-new-card" id="popNewCard">
+			</div> */}
+		<PopnewHtml />
+			{/* <div className="pop-new-card" id="popNewCard">
 				<div className="pop-new-card__container">
 					<div className="pop-new-card__block">
 						<div className="pop-new-card__content">
@@ -140,9 +144,10 @@ function App() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
+		<PopbrowsHtml />
 
-			<div className="pop-browse" id="popBrowse">
+			{/* <div className="pop-browse" id="popBrowse">
 				<div className="pop-browse__container">
 					<div className="pop-browse__block">
 						<div className="pop-browse__content">
@@ -278,9 +283,9 @@ function App() {
 						</div>
 					</div>
 				</div>
-			</div>
-		
-		<header className="header">
+			</div> */}
+		<HeaderComponent />
+		{/* <header className="header">
 			<div className="container">
 				<div className="header__block">
 					<div className="header__logo _show _light">
@@ -305,8 +310,9 @@ function App() {
 					</nav>					
 				</div>
 			</div>			
-		</header>
-		<main className="main">
+		</header> */}
+    < MainHtml />
+		{/* <main className="main">
 			<div className="container">
 				
 				<div className="main__block">
@@ -743,7 +749,7 @@ function App() {
 				
 				</div>
 			</div>
-		</main>
+		</main> */}
 		
     </div>
     </div>
