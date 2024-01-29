@@ -12,6 +12,11 @@ function App() {
 	const [cards, setCards] = useState(cardList);
   
 	const [isLoaded, setIsLoaded] = useState(true);
+	useEffect(()=>{
+		setTimeout(()=>{
+			setIsLoaded(false)
+		}, 2000)
+	}, [])
 
 
 	function addCard() {
