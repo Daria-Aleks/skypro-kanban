@@ -12,11 +12,7 @@ function App() {
 	const [cards, setCards] = useState(cardList);
   
 	const [isLoaded, setIsLoaded] = useState(true);
-	useEffect(()=>(
-		setTimeout(()=>{
-			setIsLoaded(false);
-		}, 2000)
-	), [] )
+
 
 	function addCard() {
 		setCards([
@@ -41,7 +37,7 @@ function App() {
 		<PopNewCard/>
 		<PopBrowse/>
 		<Header addCard={addCard}/>
-		<Main isLoaded={isLoaded} cardList={cards} />
+		<Main cardList={cards} />
 		</Wrapper>);
   }
 
