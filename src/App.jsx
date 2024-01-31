@@ -42,7 +42,7 @@ function App() {
 		<PopNewCard/>
 		<PopBrowse/>
 		<Header addCard={addCard}/>
-		<Main cardList={cards} />
+		<Main isLoaded={isLoaded} cardList={cards} />
 		</Wrapper>);
   }
 
