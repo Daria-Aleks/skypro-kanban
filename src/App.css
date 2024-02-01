@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -23,7 +23,7 @@ button,
 
 ul li {
   list-style: none;
-}
+} */
 
 @keyframes card-animation {
   0% {
@@ -829,10 +829,10 @@ body {
   position: relative;
 }
 .cards__item {
-  padding: 5px;
+  /* padding: 5px;
   animation-name: card-animation;
   animation-duration: 500ms;
-  animation-timing-function: linear;
+  animation-timing-function: linear; */
 }
 .cards__card {
   width: 220px;
