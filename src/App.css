@@ -116,7 +116,7 @@ body {
 }
 
 .pop-exit {
-  display: none;
+  /* display: none;
   width: 100%;
   height: 100%;
   min-width: 320px;
@@ -124,10 +124,10 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 5; */
 }
 .pop-exit__container {
-  width: 100%;
+  /* width: 100%;
   height: 100%;
   min-height: 100vh;
   padding: 0 16px;
@@ -135,10 +135,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4); */
 }
 .pop-exit__block {
-  display: block;
+  /* display: block;
   margin: 0 auto;
   background-color: #FFFFFF;
   max-width: 370px;
@@ -146,15 +146,15 @@ body {
   padding: 50px 60px;
   border-radius: 10px;
   border: 0.7px solid #D4DBE5;
-  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13); */
 }
 .pop-exit__ttl h2 {
-  text-align: center;
+  /* text-align: center;
   font-size: 20px;
   font-weight: 700;
   line-height: 30px;
   letter-spacing: -0.4px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
 }
 .pop-exit__exit-yes {
   width: 153px;
@@ -714,12 +714,12 @@ body {
 }
 
 .header {
-  width: 100%;
+  /* width: 100%;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: #FFFFFF; */
 }
 .header__block {
-  height: 70px;
+  /* height: 70px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -727,17 +727,17 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  padding: 0 10px;
+  padding: 0 10px; */
 }
 .header__logo img {
   width: 85px;
 }
 .header__nav {
-  max-width: 290px;
+  /* max-width: 290px;
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 .header__btn-main-new {
   width: 178px;
@@ -793,17 +793,17 @@ body {
 }
 
 .main {
-  width: 100%;
-  background-color: #EAEEF6;
+  /* width: 100%;
+  background-color: #EAEEF6; */
 }
 .main__block {
-  width: 100%;
+  /* width: 100%;
   margin: 0 auto;
-  padding: 25px 0 49px;
+  padding: 25px 0 49px; */
 }
 .main__content {
-  width: 100%;
-  display: flex;
+  /* width: 100%;
+  display: flex; */
 }
 .main__column {
   width: 20%;
@@ -824,9 +824,9 @@ body {
 }
 
 .cards {
-  width: 100%;
+  /* width: 100%;
   display: block;
-  position: relative;
+  position: relative; */
 }
 .cards__item {
   /* padding: 5px;
@@ -835,7 +835,7 @@ body {
   animation-timing-function: linear; */
 }
 .cards__card {
-  width: 220px;
+  /* width: 220px;
   height: 130px;
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -843,70 +843,70 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: stretch;
-  padding: 15px 13px 19px;
+  padding: 15px 13px 19px; */
 }
 
 .card__group {
-  width: 100%;
+  /* width: 100%;
   height: 20px;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 .card__theme {
-  width: auto;
+  /* width: auto;
   height: 20px;
   padding: 5px 14px;
-  border-radius: 18px;
+  border-radius: 18px; */
 }
 .card__theme p {
-  font-size: 10px;
+  /* font-size: 10px;
   font-weight: 600;
-  line-height: 10px;
+  line-height: 10px; */
 }
 .card__btn {
-  width: 24px;
+  /* width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 2px;
+  padding: 2px; */
 }
 .card__btn div {
-  width: 4px;
+  /* width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #94A6BE;
+  background-color: #94A6BE; */
 }
 .card__title {
-  font-size: 14px;
+  /* font-size: 14px;
   font-weight: 500;
   line-height: 18px;
   color: #000000;
-  margin-bottom: 10px;
+  margin-bottom: 10px; */
 }
 .card__content {
-  height: 64px;
+  /* height: 64px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 .card__date {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; */
 }
 .card__date svg {
-  width: 13px;
+  /* width: 13px; */
 }
 .card__date p {
-  margin-left: 6px;
+  /* margin-left: 6px;
   font-size: 10px;
   line-height: 13px;
   color: #94A6BE;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.2px; */
 }
 
 @media screen and (max-width: 1200px) {
