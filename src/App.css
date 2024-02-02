@@ -364,6 +364,7 @@ body {
   color: #94A6BE;
   letter-spacing: -0.14px;
 }
+
 .form-new__input::placeholder, .form-new__area::placeholder {
   font-weight: 400;
   font-size: 14px;
