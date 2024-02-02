@@ -7,6 +7,7 @@ import PopNewCard from './components/PopNewCard/PopNewCard'
 import PopBrowse from './components/PopBrowse/PopBrowse'
 import { useEffect, useState } from 'react'
 import { cardList } from './data'
+import { GlobalStyle } from './Global.styled'
 
 function App() {
 	const [cards, setCards] = useState(cardList);
@@ -37,13 +38,17 @@ function App() {
 		])
 	}
   
-	return (<Wrapper>
+	return (
+		<>
+		<GlobalStyle/>
+		<Wrapper>
 		<PopExit/>
 		<PopNewCard/>
 		<PopBrowse/>
 		<Header addCard={addCard}/>
 		<Main isLoaded={isLoaded} cardList={cards} />
-		</Wrapper>);
+		</Wrapper>
+		</>);
   }
 
 
