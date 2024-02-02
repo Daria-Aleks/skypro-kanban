@@ -1,4 +1,4 @@
-import { HeaderBlock, HeaderDiv, HeaderNav } from "./Header.styled"
+import { HeaderBlock, HeaderBtnNew, HeaderDiv, HeaderNav, HeaderPopUserSet, HeaderUser, PopUserSetMail, PopUserSetName, PopUserSetTheme } from "./Header.styled"
 import { Container } from "../Common/Common.styled"
 import { useState } from "react"
 function Header({addCard}){
@@ -18,20 +18,28 @@ function Header({addCard}){
             </div>
             <HeaderNav>
             <nav>
-                <button className="header__btn-main-new _hover01" id="btnMainNew" onClick={addCard}>
+                <HeaderBtnNew onClick={addCard}>
                     Создать новую задачу
-                </button>
-                <a href="#user-set-target" className="header__user _hover02" onClick={tooglePopUp}>Ivan Ivanov</a>
-                {isOpened && <div className="header__pop-user-set pop-user-set">
+                </HeaderBtnNew>
+                <HeaderUser href="#user-set-target" onClick={tooglePopUp}>
+                Ivan Ivanov
+                </HeaderUser>
+                {isOpened && <HeaderPopUserSet>
                     <a href="">x</a> 
-                    <p className="pop-user-set__name">Ivan Ivanov</p>
-                    <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                    <div className="pop-user-set__theme">
+                    <PopUserSetName>
+                    Ivan Ivanov
+                    </PopUserSetName>
+                    <PopUserSetMail>
+                    ivan.ivanov@gmail.com
+                    </PopUserSetMail>
+                    <PopUserSetTheme>
                         <p>Темная тема</p>
                         <input type="checkbox" className="checkbox" name="checkbox" />
-                    </div>
+                    </PopUserSetTheme>
+                    
                     <button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
-                </div>}
+                </HeaderPopUserSet>
+                }
             </nav>	 
             </HeaderNav>	    
         </HeaderBlock>
