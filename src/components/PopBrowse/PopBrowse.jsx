@@ -1,5 +1,11 @@
-function PopBrowse(){
-    return <div className="pop-browse" id="popBrowse">
+import { Link, useParams } from "react-router-dom"
+import { appRoutes } from "../../lib/appRoutes"
+
+function PopBrowse({cards}){
+    const params = useParams();
+    console.log(params.id)
+    return (
+    <div className="pop-browse" id="popBrowse">
         <div className="pop-browse__container">
             <div className="pop-browse__block">
                 <div className="pop-browse__content">
@@ -8,6 +14,7 @@ function PopBrowse(){
                         <div className="categories__theme theme-top _orange _active-category">
                             <p className="_orange">Web Design</p>
                         </div>
+                        <p>Не знаю, где отобразить id, будет здесь: {params.id}</p>
                     </div>
                     <div className="pop-browse__status status">
                         <p className="status__p subttl">Статус</p>
@@ -121,7 +128,7 @@ function PopBrowse(){
                             <button className="btn-browse__edit _btn-bor _hover03"><a href="#">Редактировать задачу</a></button>
                             <button className="btn-browse__delete _btn-bor _hover03"><a href="#">Удалить задачу</a></button>
                         </div>
-                        <button className="btn-browse__close _btn-bg _hover01"><a href="#">Закрыть</a></button>
+                        <button className="btn-browse__close _btn-bg _hover01" type="button"><Link to={appRoutes.MAIN}>Закрыть</Link></button>
                     </div>
                     <div className="pop-browse__btn-edit _hide">
                         <div className="btn-group">
@@ -136,5 +143,6 @@ function PopBrowse(){
             </div>
         </div>
     </div>
+    )
 }
 export default PopBrowse

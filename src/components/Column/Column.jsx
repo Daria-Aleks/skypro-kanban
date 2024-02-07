@@ -5,11 +5,12 @@ function Column({title, cardList}){
         <p>{title}</p>
     </div>
     <div className="cards">
-        {cardList.map((card) => (
+        {cardList?.map((card) => (
         <Card name={card.title}
         theme={card.theme}
         date={card.date}
         key={card.id}
+        id={card.id}
         />    
         ))}
     </div>

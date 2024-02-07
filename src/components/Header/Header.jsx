@@ -1,6 +1,8 @@
 import { HeaderBlock, HeaderBtnNew, HeaderDiv, HeaderNav, HeaderPopUserSet, HeaderUser, PopUserSetMail, PopUserSetName, PopUserSetTheme } from "./Header.styled"
 import { Container } from "../Common/Common.styled"
 import { useState } from "react"
+import { Link } from "react-router-dom"
+import { appRoutes } from "../../lib/appRoutes"
 function Header({addCard}){
     const [isOpened, setIsOpened] = useState(false)
     function tooglePopUp(){
@@ -37,7 +39,7 @@ function Header({addCard}){
                         <input type="checkbox" className="checkbox" name="checkbox" />
                     </PopUserSetTheme>
                     
-                    <button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
+                    <button type="button" className="_hover03"><Link to={appRoutes.EXIT}>Выйти</Link></button>
                 </HeaderPopUserSet>
                 }
             </nav>	 

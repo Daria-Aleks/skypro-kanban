@@ -1,6 +1,9 @@
 import Column from "../Column/Column"
 import { Container } from "../Common/Common.styled"
 import { MainBlock, MainContent, MainDiv } from "./Main.styled";
+import { BrowserRouter } from 'react-router-dom';
+
+
 const statusList = [
     "Без статуса",
     "Нужно сделать",
@@ -20,7 +23,7 @@ function Main({cardList, isLoaded}){
                         <Column 
                         key = {item}
                         title = {item}
-                        cardList ={cardList.filter((card => card.status === item))} />
+                        cardList ={cardList?.filter((card => card.status === item))} />
                     ))
                 }
             </MainContent>
