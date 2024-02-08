@@ -2,10 +2,26 @@ import { ContainerSignIn, Modal, ModalBlock, ModalBtnEnter, ModalFormGroup, Moda
 import { Wrapper } from "../Common/Common.styled";
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
+import { useState } from "react";
 function Login({setIsAuth}){
     function enter() {
         setIsAuth(true)
     }
+    const formFields = {
+        login: "",
+        passwd: "",
+    };
+    const [formData, setFormData] = useState(formFields);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+      
+        setFormData({
+          ...formData, 
+          [name]: value,
+        });
+    };
+
     return (
     <Wrapper>
         <ContainerSignIn>
@@ -15,8 +31,24 @@ function Login({setIsAuth}){
                     <h2>Вход</h2>
                 </ModalTtl>
                 <ModalLogin id="formLogIn">
-                    <ModalInput type="text" name="login" id="formlogin" placeholder="Эл. почта"></ModalInput>
-                    <ModalInput type="password" name="password" id="formpassword" placeholder="Пароль"></ModalInput>
+                    <ModalInput 
+                        type="text" 
+                        id="formlogin" 
+                        placeholder="Эл. почта" 
+                        name="login"
+                        value={formData.login}
+                        onChange={handleInputChange}
+                        >
+                    </ModalInput>
+                    <ModalInput 
+                        type="password" 
+                        name="passwd" 
+                        id="formpassword" 
+                        placeholder="Пароль"
+                        value={formData.passwd}
+                        onChange={handleInputChange}
+                    >
+                    </ModalInput>
                     <ModalBtnEnter id="btnEnter" type="button" onClick={enter}>
                             <p>Войти</p>
                     </ModalBtnEnter>
