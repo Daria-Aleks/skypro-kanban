@@ -1,6 +1,6 @@
 import Column from "../Column/Column"
 import { Container } from "../Common/Common.styled"
-import { MainBlock, MainContent, MainDiv } from "./Main.styled";
+import { MainBlock, MainContent, MainDiv } from "./Main.styled"
 import { BrowserRouter } from 'react-router-dom';
 
 

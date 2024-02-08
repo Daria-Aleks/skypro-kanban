@@ -1,6 +1,10 @@
 import { PopExitBlock, PopExitContainer, PopExitDiv, PopExitForm, PopExitTtl } from "./PopExit.styled"
-
-function PopExit(){
+import { Link } from "react-router-dom"
+import { appRoutes } from "../../lib/appRoutes"
+function PopExit(setIsAuth){
+    function exit() {
+        setIsAuth(false)
+    }
     return (
     <PopExitDiv>
     <div id="popExit">
@@ -11,8 +15,8 @@ function PopExit(){
             </PopExitTtl>
             <form className="pop-exit__form" id="formExit" action="#">
                 <PopExitForm>
-                    <button className="pop-exit__exit-yes _hover01" id="exitYes"><a href="modal/signin.html">Да, выйти</a> </button>
-                    <button className="pop-exit__exit-no _hover03" id="exitNo"><a href="main.html">Нет, остаться</a> </button>
+                    <button className="pop-exit__exit-yes _hover01" id="exitYes" onClick={exit}><Link to={appRoutes.LOGIN}>Да, выйти</Link></button>
+                    <button className="pop-exit__exit-no _hover03" id="exitNo"><Link to={appRoutes.MAIN}>Нет, остаться</Link></button>
                 </PopExitForm>
             </form>
         </PopExitBlock>

@@ -2,21 +2,19 @@ import { Outlet } from "react-router-dom";
 import { Wrapper } from "../components/Common/Common.styled";
 import Header from "../components/Header/Header";
 import Main from "../components/Main/Main";
-import PopBrowse from "../components/PopBrowse/PopBrowse";
-import PopExit from "../components/PopExit/PopExit";
-import PopNewCard from "../components/PopNewCard/PopNewCard";
+import Login from "../components/Login/Login";
 
-export default function MainPage({addCard, isLoaded, cards}){
+
+export default function MainPage({addCard, isLoaded, cards, isAuth, setIsAuth}){
     return(
         <>
-        <Wrapper>
-		{/* <PopExit/>
-		<PopNewCard/>
-		<PopBrowse/> */}
-		<Header addCard={addCard}/>
-		<Main isLoaded={isLoaded} cardList={cards} />
-        <Outlet/>
-		</Wrapper>
+        {
+            isAuth ? <Wrapper>
+            <Header addCard={addCard}/>
+            <Main isLoaded={isLoaded} cardList={cards} />
+            <Outlet/>
+            </Wrapper> : <Login setIsAuth={setIsAuth}></Login>
+        }
         </>
     )
 }
