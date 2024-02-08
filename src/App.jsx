@@ -15,7 +15,7 @@ import CardPage from './pages/CardPage'
 
 function App() {
 	// const [isLoaded, setIsLoaded] = useState(true);
-	const [isAuth, setIsAuth] = useState(true)
+	const [isAuth, setIsAuth] = useState(false)
 	
 	// useEffect(()=>{
 	// 	setTimeout(()=>{

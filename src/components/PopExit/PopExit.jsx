@@ -1,7 +1,7 @@
 import { PopExitBlock, PopExitContainer, PopExitDiv, PopExitForm, PopExitTtl } from "./PopExit.styled"
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
-function PopExit(setIsAuth){
+function PopExit({setIsAuth}){
     function exit() {
         setIsAuth(false)
     }
