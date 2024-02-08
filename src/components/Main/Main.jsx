@@ -1,6 +1,6 @@
 import Column from "../Column/Column"
 import { Container } from "../Common/Common.styled"
-import { MainBlock, MainContent, MainDiv } from "./Main.styled";
+import { MainBlock, MainContent, MainDiv } from "./Main.styled"
 import { BrowserRouter } from 'react-router-dom';
 
 
@@ -12,19 +12,19 @@ const statusList = [
     "Готово",
   ];
 
-function Main({cardList, isLoaded}){
+function Main({cardList, isLoaded, error}){
     return (
     <MainDiv>
     <Container>
         <MainBlock>
             <MainContent>
                 {
-                    isLoaded? 'Loading' : statusList.map((item) => (
+                    isLoaded? 'Loading' : error? "Не удалось загрузить данные, попробуйте позже ": statusList.map((item) => (
                         <Column 
                         key = {item}
                         title = {item}
-                        cardList ={cardList?.filter((card => card.status === item))} />
-                    ))
+                        cardList ={cardList.length > 0 ? cardList?.filter((card => card.status === item)) : []} />
+                    )) 
                 }
             </MainContent>
         </MainBlock>
