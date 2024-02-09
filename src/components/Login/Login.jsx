@@ -3,8 +3,8 @@ import { Wrapper } from "../Common/Common.styled";
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
 import { useState } from "react";
-import { auth, getTodos } from "../../api";
-function Login({setIsAuth}){
+import { auth } from "../../api";
+function Login({setIsAuth, setUser}){
     const formFields = {
         login: "",
         passwd: "",
@@ -12,9 +12,15 @@ function Login({setIsAuth}){
 
     function authFunc() {
         auth(formData.login, formData.passwd)
-            .then(responce => responce.user ? setIsAuth(true) : setIsAuth(false))
+            .then(responce => responce.user ? enter(responce.user) : setIsAuth(false))
+    }
+
+    function enter(user) {
+        setIsAuth(true)
+        setUser(user.login) 
     }
     const [formData, setFormData] = useState(formFields);
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

@@ -1,6 +1,5 @@
 import './App.css'
-import { useEffect, useState } from 'react'
-import { cardList } from './data'
+import { useState, useEffect } from 'react'
 import { GlobalStyle } from './Global.styled'
 import { appRoutes } from "./lib/appRoutes"
 import { Routes, Route, useParams } from 'react-router-dom'
@@ -10,32 +9,34 @@ import NotFoundPage from './pages/NotFoundedPage'
 import MainPage from './pages/MainPage'
 import PopExitPage from './pages/PopExitPage'
 import CardPage from './pages/CardPage'
-
-
+import CreateCardPage from './pages/CreateCardPage'
+import { UserContext } from "./contexts/user";
 
 function App() {
-	// const [isLoaded, setIsLoaded] = useState(true);
-	const [isAuth, setIsAuth] = useState(false)
-	
-	// useEffect(()=>{
-	// 	setTimeout(()=>{
-	// 		setIsLoaded(false)
-	// 	}, 2000)
-	// }, [])
-  
+	const [isAuth, setIsAuth] = useState(true)
+	const [user, setUser] = useState(() => {
+		const saved = localStorage.getItem("user");
+		const initialValue = JSON.parse(saved);
+		return initialValue || "user";
+	})
+	useEffect(() => {
+		localStorage.setItem("user", JSON.stringify(user));
+	}, [user]);
 	return (
 		<>
-		<GlobalStyle/>
-		<Routes>
-			<Route path={appRoutes.MAIN} element ={<MainPage isAuth={isAuth} setIsAuth={setIsAuth}/>}>
-			<Route path={appRoutes.EXIT} element ={<PopExitPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-			<Route path={`${appRoutes.CARD}/:id`} element ={<CardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-			</Route>
-			<Route path={appRoutes.LOGIN} element ={<LoginPage setIsAuth={setIsAuth}/>}/>
-			<Route path={appRoutes.REGISTER} element ={<RegisterPage/>}/>
-			<Route path={appRoutes.NOT_FOUND} element ={<NotFoundPage/>}/>
-		</Routes>
-		
+		<UserContext.Provider value={user}>
+			<GlobalStyle/>
+			<Routes>
+				<Route path={appRoutes.MAIN} element ={<MainPage isAuth={isAuth} setIsAuth={setIsAuth}/>}>
+				<Route path={appRoutes.EXIT} element ={<PopExitPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+				<Route path={`${appRoutes.CARD}/:id`} element ={<CardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+				<Route path={appRoutes.CREATE} element ={<CreateCardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+				</Route>
+				<Route path={appRoutes.LOGIN} element ={<LoginPage setIsAuth={setIsAuth} setUser={setUser}/>}/>
+				<Route path={appRoutes.REGISTER} element ={<RegisterPage/>}/>
+				<Route path={appRoutes.NOT_FOUND} element ={<NotFoundPage/>}/>
+			</Routes>
+		</UserContext.Provider>
 		</>);
   }
 

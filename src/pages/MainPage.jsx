@@ -12,14 +12,14 @@ export default function MainPage({addCard, isAuth, setIsAuth}){
     const [error, setError] = useState(false)
     useEffect(() => {
         getTodos()
-            .then((todos) => {todos.error ? setError(todos.error) : setCards([]), setIsLoaded(false)})
+            .then((todos) => {todos.error ? setError(todos.error) : setCards(todos), setIsLoaded(false)})
     }, [])
     return(
         <>
         {
             isAuth ? <Wrapper>
             <Header addCard={addCard}/>
-            <Main isLoaded={isLoaded} error={error} cardList={cards} />
+            <Main isLoaded={isLoaded} error={error} cardList={cards.todos} />
             <Outlet/>
             </Wrapper> : <Login setIsAuth={setIsAuth}></Login>
         }

@@ -3,7 +3,6 @@ import { appRoutes } from "../../lib/appRoutes"
 
 function PopBrowse({cards}){
     const params = useParams();
-    console.log(params.id)
     return (
     <div className="pop-browse" id="popBrowse">
         <div className="pop-browse__container">

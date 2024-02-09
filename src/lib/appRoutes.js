@@ -4,5 +4,6 @@ export const appRoutes = {
     EXIT: "/exit/",
     CARD: "/card",
     REGISTER: "/register",
-    LOGIN: "/login"
+    LOGIN: "/login",
+    CREATE: '/create'
 }

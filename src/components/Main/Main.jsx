@@ -23,7 +23,7 @@ function Main({cardList, isLoaded, error}){
                         <Column 
                         key = {item}
                         title = {item}
-                        cardList ={cardList.length > 0 ? cardList?.filter((card => card.status === item)) : []} />
+                        cardList ={item == 'Без статуса' ? cardList : []} />
                     )) 
                 }
             </MainContent>

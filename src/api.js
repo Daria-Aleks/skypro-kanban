@@ -35,3 +35,17 @@ export async function create(name, login, passwd) {
   const data = await responce.json();
   return data;
 }
+
+export async function createTodo(text) {
+  const responce = await fetch('https://wedev-api.sky.pro/api/v2/todos', {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({
+        "text": text
+    })
+  });
+  const data = await responce.json();
+  return data;
+}

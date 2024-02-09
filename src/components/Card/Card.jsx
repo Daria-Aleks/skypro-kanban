@@ -31,7 +31,7 @@ function Card({name, theme, date, id}){
             <CardContent>
 
             <Link to={`${appRoutes.CARD}/${id}`}>
-                <CardTitle CardTitle>
+                <CardTitle>
                 <h3>{name}</h3>
                 </CardTitle>
             </Link>
