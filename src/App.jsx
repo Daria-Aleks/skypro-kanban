@@ -11,31 +11,41 @@ import PopExitPage from './pages/PopExitPage'
 import CardPage from './pages/CardPage'
 import CreateCardPage from './pages/CreateCardPage'
 import { UserContext } from "./contexts/user";
+import { TaskContext } from './contexts/tasks'
 
 function App() {
 	const [isAuth, setIsAuth] = useState(true)
+	const [cards, setCards ] = useState("user")
 	const [user, setUser] = useState(() => {
 		const saved = localStorage.getItem("user");
 		const initialValue = JSON.parse(saved);
 		return initialValue || "user";
 	})
+
+	const updateTasks = (card) => {
+    setCards(card);
+  };
+
 	useEffect(() => {
 		localStorage.setItem("user", JSON.stringify(user));
 	}, [user]);
+
 	return (
 		<>
 		<UserContext.Provider value={user}>
+			<TaskContext.Provider value={{cards, updateTasks}}>
+				<Routes>
+					<Route path={appRoutes.MAIN} element ={<MainPage isAuth={isAuth} setIsAuth={setIsAuth} cards={cards} setCards={setCards}/>}>
+					<Route path={appRoutes.EXIT} element ={<PopExitPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+					<Route path={`${appRoutes.CARD}/:id`} element ={<CardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+					<Route path={appRoutes.CREATE} element ={<CreateCardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+					</Route>
+					<Route path={appRoutes.LOGIN} element ={<LoginPage setIsAuth={setIsAuth} setUser={setUser}/>}/>
+					<Route path={appRoutes.REGISTER} element ={<RegisterPage/>}/>
+					<Route path={appRoutes.NOT_FOUND} element ={<NotFoundPage/>}/>
+				</Routes>
+			</TaskContext.Provider>
 			<GlobalStyle/>
-			<Routes>
-				<Route path={appRoutes.MAIN} element ={<MainPage isAuth={isAuth} setIsAuth={setIsAuth}/>}>
-				<Route path={appRoutes.EXIT} element ={<PopExitPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-				<Route path={`${appRoutes.CARD}/:id`} element ={<CardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-				<Route path={appRoutes.CREATE} element ={<CreateCardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-				</Route>
-				<Route path={appRoutes.LOGIN} element ={<LoginPage setIsAuth={setIsAuth} setUser={setUser}/>}/>
-				<Route path={appRoutes.REGISTER} element ={<RegisterPage/>}/>
-				<Route path={appRoutes.NOT_FOUND} element ={<NotFoundPage/>}/>
-			</Routes>
 		</UserContext.Provider>
 		</>);
   }

@@ -1,6 +1,6 @@
 import Card from "../Card/Card"
 function Column({title, cardList}){
-    console.log(cardList)
+    // console.log(cardList)
     return <div className="main__column">
     <div className="column__title">
         <p>{title}</p>

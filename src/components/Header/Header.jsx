@@ -4,9 +4,9 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
 import { useUserContext } from "../../contexts/user"
+
 function Header({addCard}){
     const user = useUserContext();
-
     const [isOpened, setIsOpened] = useState(false)
     function tooglePopUp(){
         setIsOpened((isOpened) => !isOpened)

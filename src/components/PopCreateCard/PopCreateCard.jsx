@@ -4,12 +4,16 @@ import { DayPicker } from 'react-day-picker';
 import { createTodo } from "../../api";
 import { useState } from "react";
 import 'react-day-picker/dist/style.css';
+import { useTasksContext } from "../../contexts/tasks"
+import { PopBrowse, PopBrowseContainer, PopBrowseBlockCreate, PopBrowseContent, PopBrowseTopBlock, PopBrowseTtl, StatusTheme, CategoriesTheme } from "./PopCreated.styled"
 
 function PopCreateCard(){
     const formField = {
         text: "",
     }
     const [formData, setFormData] = useState(formField);
+    const { cards, updateTasks } = useTasksContext();
+
     const handleInputChange = (e) => {
         const { value } = e.target;
       
@@ -20,21 +24,19 @@ function PopCreateCard(){
     };
 
     function createTodoFunc() {
-        createTodo(formData.text)
+        createTodo(formData.text).then(responce => updateTasks(responce.todos))
     }
     return (
-    <div className="pop-browse" id="popBrowse">
-        <div className="pop-browse__container">
-            <div className="pop-browse__block-create">
-                <div className="pop-browse__content">
-                    <div className="pop-browse__top-block">
-                        <h3 className="pop-browse__ttl">Создание задачи</h3>
-                    </div>
+    <PopBrowse>
+        <PopBrowseContainer>
+            <PopBrowseBlockCreate>
+                <PopBrowseContent>
+                    <PopBrowseTopBlock>
+                        <PopBrowseTtl>Создание задачи</PopBrowseTtl>
+                    </PopBrowseTopBlock>
                     <div className="pop-browse__status status">
                         <p className="status__p subttl">Название задачи</p>
                         <div className="status__themes">
-                            <div className="status__theme _hide">
-                            </div>
                             <input 
                                 className="form-browse__input" 
                                 name="text" id="textArea01" 
@@ -43,16 +45,6 @@ function PopCreateCard(){
                                 onChange={handleInputChange}
                                 >
                                 </input>
-
-                            <div className="status__theme _hide">
-                                <p>В работе</p>
-                            </div>
-                            <div className="status__theme _hide">
-                                <p>Тестирование</p>
-                            </div>
-                            <div className="status__theme _hide">
-                                <p>Готово</p>
-                            </div>
                         </div>
                     </div>
                     <div className="pop-browse__wrap-create">
@@ -73,37 +65,26 @@ function PopCreateCard(){
                     </div>
                     <div className="theme-down__categories theme-down">
                         <p className="categories__p subttl">Категория</p>
-                        <div className="categories__theme _orange _active-category">
-                            <p className="_orange">Web Design</p>
-                        </div>
                     </div>
                     <div className="pop-browse__btn-browse ">
                         <div className="btn-group flex">
-                        <div className="categories__theme theme-top _orange _active-category">
-                            <p className="_orange">Web Design</p>
-                        </div>
-                        <div className="categories__theme theme-top _green _active-category">
-                            <p className="_green">Research</p>
-                        </div>
-                        <div className="categories__theme theme-top _purple _active-category">
-                            <p className="_purple">Copywriting</p>
-                        </div>
+                        <CategoriesTheme className="theme-top _orange _active-category">
+                            <p className="_orange categories">Web Design</p>
+                        </CategoriesTheme>
+                        <CategoriesTheme className="theme-top _green _active-category">
+                            <p className="_green categories">Research</p>
+                        </CategoriesTheme>
+                        <CategoriesTheme className=" theme-top _purple _active-category">
+                            <p className="_purple categories">Copywriting</p>
+                        </CategoriesTheme>
                         </div>
                         <button className="btn-browse__close _btn-bg _hover01" type="button" onClick={createTodoFunc}><Link to={appRoutes.MAIN}>Создать задачу</Link></button>
                     </div>
-                    <div className="pop-browse__btn-edit _hide">
-                        <div className="btn-group">
-                            <button className="btn-edit__edit _btn-bg _hover01"><a href="#">Сохранить</a></button>
-                            <button className="btn-edit__edit _btn-bor _hover03"><a href="#">Отменить</a></button>
-                            <button className="btn-edit__delete _btn-bor _hover03" id="btnDelete"><a href="#">Удалить задачу</a></button>
-                        </div>
-                        <button className="btn-edit__close _btn-bg _hover01"><a href="#">Закрыть</a></button>
-                    </div>
                                             
-                </div>
-            </div>
-        </div>
-    </div>
+                </PopBrowseContent>
+            </PopBrowseBlockCreate>
+        </PopBrowseContainer>
+    </PopBrowse>
     )
 }
 export default PopCreateCard
