@@ -7,7 +7,7 @@ import { getTodos } from "../api";
 import { useEffect, useState } from "react";
 import { TaskContext } from "../contexts/tasks";
 
-export default function MainPage({addCard, isAuth, setIsAuth, cards, setCards}){
+export default function MainPage({addCard, cards, setCards}){
     // const [cards, setCards] = useState([])
     const [isLoaded, setIsLoaded] = useState(true);
     const [error, setError] = useState(false)
@@ -23,7 +23,7 @@ export default function MainPage({addCard, isAuth, setIsAuth, cards, setCards}){
     return(
         <>
         {
-            isAuth ? 
+
             // <TaskContext.Provider value={{ cards, setCards }}>
                 <Wrapper>
                     <Header addCard={addCard}/>
@@ -31,7 +31,7 @@ export default function MainPage({addCard, isAuth, setIsAuth, cards, setCards}){
                     <Outlet/>
                 </Wrapper> 
             // </TaskContext.Provider>
-            : <Login setIsAuth={setIsAuth}></Login>
+
         }
         </>
     )

@@ -12,9 +12,10 @@ import CardPage from './pages/CardPage'
 import CreateCardPage from './pages/CreateCardPage'
 import { UserContext } from "./contexts/user";
 import { TaskContext } from './contexts/tasks'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 
 function App() {
-	const [isAuth, setIsAuth] = useState(true)
+	const [isAuth, setIsAuth] = useState(true);
 	const [cards, setCards ] = useState("user")
 	const [user, setUser] = useState(() => {
 		const saved = localStorage.getItem("user");
@@ -35,12 +36,14 @@ function App() {
 		<UserContext.Provider value={user}>
 			<TaskContext.Provider value={{cards, updateTasks}}>
 				<Routes>
-					<Route path={appRoutes.MAIN} element ={<MainPage isAuth={isAuth} setIsAuth={setIsAuth} cards={cards} setCards={setCards}/>}>
-					<Route path={appRoutes.EXIT} element ={<PopExitPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-					<Route path={`${appRoutes.CARD}/:id`} element ={<CardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
-					<Route path={appRoutes.CREATE} element ={<CreateCardPage isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
+				<Route element={<PrivateRoute isAuth={isAuth}></PrivateRoute>}>
+						<Route path={appRoutes.MAIN} element ={<MainPage cards={cards} setCards={setCards}/>}>
+							<Route path={appRoutes.EXIT} element ={<PopExitPage />}/>
+							<Route path={`${appRoutes.CARD}/:id`} element ={<CardPage/>}/>
+						<Route path={appRoutes.CREATE} element ={<CreateCardPage/>}/>
 					</Route>
-					<Route path={appRoutes.LOGIN} element ={<LoginPage setIsAuth={setIsAuth} setUser={setUser}/>}/>
+					</Route>
+					<Route path={appRoutes.LOGIN} element ={<LoginPage setUser={setUser} setIsAuth={setIsAuth}/>}/>
 					<Route path={appRoutes.REGISTER} element ={<RegisterPage/>}/>
 					<Route path={appRoutes.NOT_FOUND} element ={<NotFoundPage/>}/>
 				</Routes>

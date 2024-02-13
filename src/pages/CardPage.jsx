@@ -1,7 +1,7 @@
 import PopBrowse from "../components/PopBrowse/PopBrowse";
 import Login from "../components/Login/Login";
 
-function CardPage({cards, isAuth, setIsAuth}){
-    return isAuth ? <PopBrowse cards={cards}/> : <Login setIsAuth={setIsAuth}></Login>
+function CardPage({cards}){
+    return <PopBrowse cards={cards}/>
 }
 export default CardPage;

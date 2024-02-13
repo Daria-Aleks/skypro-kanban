@@ -4,7 +4,10 @@ import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
 import { useState } from "react";
 import { auth } from "../../api";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Login({setIsAuth, setUser}){
+    let navigate = useNavigate();
     const formFields = {
         login: "",
         passwd: "",
@@ -18,9 +21,9 @@ function Login({setIsAuth, setUser}){
     function enter(user) {
         setIsAuth(true)
         setUser(user.login) 
+        navigate(appRoutes.MAIN)
     }
     const [formData, setFormData] = useState(formFields);
-
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

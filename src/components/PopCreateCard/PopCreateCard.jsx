@@ -5,26 +5,47 @@ import { createTodo } from "../../api";
 import { useState } from "react";
 import 'react-day-picker/dist/style.css';
 import { useTasksContext } from "../../contexts/tasks"
-import { PopBrowse, PopBrowseContainer, PopBrowseBlockCreate, PopBrowseContent, PopBrowseTopBlock, PopBrowseTtl, StatusTheme, CategoriesTheme } from "./PopCreated.styled"
-
+import { PopBrowse, PopBrowseContainer, PopBrowseBlockCreate, PopBrowseContent, PopBrowseTopBlock, PopBrowseTtl, StatusTheme, CategoriesTheme } from "./PopCreated.styled";
+import { format } from "date-fns";
+import { getTodos } from "../../api";
 function PopCreateCard(){
+    const [selected, setSelected] = useState();
+    let footer = <p>Please pick a day.</p>;
+    if (selected) {
+      footer = <p>You picked {format(selected, 'PP')}.</p>;
+    }
+  
+
     const formField = {
         text: "",
+        topic: "",
+        desc: "",
+
     }
     const [formData, setFormData] = useState(formField);
     const { cards, updateTasks } = useTasksContext();
 
     const handleInputChange = (e) => {
-        const { value } = e.target;
+        const { name, value } = e.target;
       
         setFormData({
           ...formData, 
-          text: value,
+          [name]: value,
         });
     };
 
-    function createTodoFunc() {
-        createTodo(formData.text).then(responce => updateTasks(responce.todos))
+    // function createTodoFunc() {
+    //     createTodo(formData.text).then(responce => updateTasks(responce.todos))
+    // }
+    const createTodoFunc = async() => {
+        let newCard = {
+            ...formData, data: selected
+        }
+        await createTodo(newCard)
+        getTodos()
+            .then((data) => {
+                updateTasks(data.todos)
+            })
     }
     return (
     <PopBrowse>
@@ -51,14 +72,23 @@ function PopCreateCard(){
                         <form className="pop-browse__form form-browse" id="formBrowseCard" action="#">									
                             <div className="form-browse__block">
                                 <label htmlFor="textArea01" className="subttl">Описание задачи</label>
-                                <textarea className="form-browse__area-create" name="text" id="textArea01" placeholder="Введите описание задачи..."></textarea>
+                                <textarea 
+                                    className="form-browse__area-create" 
+                                    name="desc" id="textArea01" 
+                                    onChange={handleInputChange}
+                                    placeholder="Введите описание задачи..."></textarea>
                             </div>
                         </form>
                         <div className="pop-new-card__calendar calendar">
                             <p className="calendar__ttl subttl">Даты</p>
                             <div className="calendar__block">
                                 <div className="calendar__content">
-                                  <DayPicker mode="single"/>
+                                  <DayPicker 
+                                  mode="single"
+                                  selected={selected}
+                                  onSelect={setSelected}
+                                  footer={footer}                            
+                                  />
                                 </div>
                             </div>
                         </div>
@@ -68,15 +98,14 @@ function PopCreateCard(){
                     </div>
                     <div className="pop-browse__btn-browse ">
                         <div className="btn-group flex">
-                        <CategoriesTheme className="theme-top _orange _active-category">
-                            <p className="_orange categories">Web Design</p>
-                        </CategoriesTheme>
-                        <CategoriesTheme className="theme-top _green _active-category">
-                            <p className="_green categories">Research</p>
-                        </CategoriesTheme>
-                        <CategoriesTheme className=" theme-top _purple _active-category">
-                            <p className="_purple categories">Copywriting</p>
-                        </CategoriesTheme>
+                            <input type="radio" id="radio1" value="Web Design" name="topic" onChange={handleInputChange}/>
+                            <label>Web Design</label>
+
+                            <input type="radio" id="radio2" value="Research" name="topic" onChange={handleInputChange}/>
+                            <label>Research</label>
+                            
+                            <input type="radio" id="radio3" value="Copywriting" name="topic" onChange={handleInputChange}/>
+                            <label>Copywriting</label>
                         </div>
                         <button className="btn-browse__close _btn-bg _hover01" type="button" onClick={createTodoFunc}><Link to={appRoutes.MAIN}>Создать задачу</Link></button>
                     </div>
