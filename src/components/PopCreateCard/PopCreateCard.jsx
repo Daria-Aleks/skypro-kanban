@@ -34,9 +34,6 @@ function PopCreateCard(){
         });
     };
 
-    // function createTodoFunc() {
-    //     createTodo(formData.text).then(responce => updateTasks(responce.todos))
-    // }
     const createTodoFunc = async() => {
         let newCard = {
             ...formData, data: selected
