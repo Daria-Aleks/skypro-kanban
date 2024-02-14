@@ -3,10 +3,9 @@ import { Container } from "../Common/Common.styled"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
-import { useUserContext } from "../../contexts/user"
 
-function Header({addCard}){
-    const user = useUserContext();
+function Header({addCard, userData}){
+
     const [isOpened, setIsOpened] = useState(false)
     function tooglePopUp(){
         setIsOpened((isOpened) => !isOpened)
@@ -29,12 +28,12 @@ function Header({addCard}){
                     </HeaderBtnNew>
                 </Link>
                 <HeaderUser href="#user-set-target" onClick={tooglePopUp}>
-                {user}
+                {userData}
                 </HeaderUser>
                 {isOpened && <HeaderPopUserSet>
                     <a href="">x</a> 
                     <PopUserSetName>
-                    {user}
+                    {userData}
                     </PopUserSetName>
                     <PopUserSetMail>
                     ivan.ivanov@gmail.com

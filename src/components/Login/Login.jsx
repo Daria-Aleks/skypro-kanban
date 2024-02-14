@@ -6,6 +6,7 @@ import { useState } from "react";
 import { auth } from "../../api";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 function Login({setIsAuth, setUser}){
     let navigate = useNavigate();
     const formFields = {
@@ -13,15 +14,14 @@ function Login({setIsAuth, setUser}){
         passwd: "",
     };
 
+    const {loginUser} = useUser();
     function authFunc() {
         auth(formData.login, formData.passwd)
             .then(responce => responce.user ? enter(responce.user) : setIsAuth(false))
     }
 
     function enter(user) {
-        setIsAuth(true)
-        setUser(user.login) 
-        navigate(appRoutes.MAIN)
+        loginUser(user)
     }
     const [formData, setFormData] = useState(formFields);
 

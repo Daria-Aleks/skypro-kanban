@@ -4,10 +4,10 @@ import { DayPicker } from 'react-day-picker';
 import { createTodo } from "../../api";
 import { useState } from "react";
 import 'react-day-picker/dist/style.css';
-import { useTasksContext } from "../../contexts/tasks"
 import { PopBrowse, PopBrowseContainer, PopBrowseBlockCreate, PopBrowseContent, PopBrowseTopBlock, PopBrowseTtl, StatusTheme, CategoriesTheme } from "./PopCreated.styled";
 import { format } from "date-fns";
 import { getTodos } from "../../api";
+import { useTasks } from "../../hooks/useTasks";
 function PopCreateCard(){
     const [selected, setSelected] = useState();
     let footer = <p>Please pick a day.</p>;
@@ -23,7 +23,6 @@ function PopCreateCard(){
 
     }
     const [formData, setFormData] = useState(formField);
-    const { cards, updateTasks } = useTasksContext();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -34,6 +33,8 @@ function PopCreateCard(){
         });
     };
 
+    const {getCards} = useTasks()
+
     const createTodoFunc = async() => {
         let newCard = {
             ...formData, data: selected
@@ -41,7 +42,7 @@ function PopCreateCard(){
         await createTodo(newCard)
         getTodos()
             .then((data) => {
-                updateTasks(data.todos)
+                getCards(data.todos)
             })
     }
     return (

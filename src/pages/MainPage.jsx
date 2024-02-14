@@ -6,19 +6,19 @@ import Login from "../components/Login/Login";
 import { getTodos } from "../api";
 import { useEffect, useState } from "react";
 import { TaskContext } from "../contexts/tasks";
+import { useUser } from "../hooks/useUser";
+import { useTasks } from "../hooks/useTasks";
 
-export default function MainPage({addCard, cards, setCards}){
-    // const [cards, setCards] = useState([])
+export default function MainPage({addCard, cards}){
+
+    const {user} = useUser()
+    const {getCards} = useTasks()
     const [isLoaded, setIsLoaded] = useState(true);
     const [error, setError] = useState(false)
 
-    // const updateTasks = (cards) => {
-    //     setCards(cards);
-    //   };
-
     useEffect(() => {
         getTodos()
-            .then((todos) => {todos.error ? setError(todos.error) : setCards(todos.todos), setIsLoaded(false)})
+            .then((todos) => {todos.error ? setError(todos.error) : getCards(todos.todos), setIsLoaded(false)})
     }, [])
     return(
         <>
@@ -26,7 +26,7 @@ export default function MainPage({addCard, cards, setCards}){
 
             // <TaskContext.Provider value={{ cards, setCards }}>
                 <Wrapper>
-                    <Header addCard={addCard}/>
+                    <Header addCard={addCard} userData={user}/>
                     <Main isLoaded={isLoaded} error={error} cardList={cards} />
                     <Outlet/>
                 </Wrapper> 

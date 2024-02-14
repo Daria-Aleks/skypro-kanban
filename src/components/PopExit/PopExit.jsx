@@ -1,10 +1,13 @@
 import { PopExitBlock, PopExitContainer, PopExitDiv, PopExitForm, PopExitTtl } from "./PopExit.styled"
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
+import { useUser } from "../../hooks/useUser"
 
 function PopExit({setIsAuth}){
+    const {logoutUser} = useUser()
+
     function exit() {
-        setIsAuth(false)
+        logoutUser()
     }
     return (
     <PopExitDiv>
