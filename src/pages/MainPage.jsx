@@ -18,7 +18,7 @@ export default function MainPage({addCard, cards}){
 
     useEffect(() => {
         getTodos()
-            .then((todos) => {todos.error ? setError(todos.error) : getCards(todos.todos), setIsLoaded(false)})
+            .then((todos) => {todos.error ? setError(todos.error) : getCards(todos.tasks), setIsLoaded(false)})
     }, [])
     return(
         <>

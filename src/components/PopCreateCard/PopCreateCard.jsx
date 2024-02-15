@@ -15,11 +15,12 @@ function PopCreateCard(){
       footer = <p>You picked {format(selected, 'PP')}.</p>;
     }
   
-
     const formField = {
-        text: "",
+        title: "",
         topic: "",
-        desc: "",
+        status: "Без статуса",
+        description: "Подробное описание задачи",
+        date: "",
 
     }
     const [formData, setFormData] = useState(formField);
@@ -37,12 +38,12 @@ function PopCreateCard(){
 
     const createTodoFunc = async() => {
         let newCard = {
-            ...formData, data: selected
+            ...formData, date: selected
         }
         await createTodo(newCard)
         getTodos()
             .then((data) => {
-                getCards(data.todos)
+                getCards(data.tasks)
             })
     }
     return (
@@ -58,7 +59,7 @@ function PopCreateCard(){
                         <div className="status__themes">
                             <input 
                                 className="form-browse__input" 
-                                name="text" id="textArea01" 
+                                name="title" id="textArea01" 
                                 placeholder="Введите название задачи..."
                                 value={formData.text}
                                 onChange={handleInputChange}
@@ -72,7 +73,7 @@ function PopCreateCard(){
                                 <label htmlFor="textArea01" className="subttl">Описание задачи</label>
                                 <textarea 
                                     className="form-browse__area-create" 
-                                    name="desc" id="textArea01" 
+                                    name="description" id="textArea01" 
                                     onChange={handleInputChange}
                                     placeholder="Введите описание задачи..."></textarea>
                             </div>

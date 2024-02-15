@@ -13,25 +13,11 @@ import CreateCardPage from './pages/CreateCardPage'
 import { TaskProvider } from './contexts/tasks'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import { useTasks } from './hooks/useTasks'
+import ChangeCardPage from './pages/ChangeCardPage'
 
 function App() {
 	const [isAuth, setIsAuth] = useState(true);
 	const {cards} = useTasks()
-	// console.log(cards)
-	// const [cards, setCards ] = useState("user")
-	// const [user, setUser] = useState(() => {
-	// 	const saved = localStorage.getItem("user");
-	// 	const initialValue = JSON.parse(saved);
-	// 	return initialValue || "user";
-	// })
-
-	// const updateTasks = (card) => {
-  //   setCards(card);
-  // };
-
-	// useEffect(() => {
-	// 	localStorage.setItem("user", JSON.stringify(user));
-	// }, [user]);
 
 	return (
 		<>
@@ -40,6 +26,7 @@ function App() {
 						<Route path={appRoutes.MAIN} element ={<MainPage cards={cards} />}>
 							<Route path={appRoutes.EXIT} element ={<PopExitPage setIsAuth={setIsAuth}/>}/>
 							<Route path={`${appRoutes.CARD}/:id`} element ={<CardPage/>}/>
+							<Route path={`${appRoutes.CHANGE}/:id`} element ={<ChangeCardPage/>}/>
 						<Route path={appRoutes.CREATE} element ={<CreateCardPage/>}/>
 					</Route>
 					</Route>

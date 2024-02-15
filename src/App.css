@@ -528,9 +528,9 @@ body {
 }
 .categories__theme {
   display: inline-block;
-  width: auto;
+  width: 120px;
   height: 30px;
-  padding: 8px 20px;
+  padding: 8px 10px;
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.4;
@@ -568,7 +568,7 @@ body {
   display: block;
   margin: 0 auto;
   background-color: #FFFFFF;
-  max-width: 630px;
+  max-width: 730px;
   width: 100%;
   padding: 40px 30px 38px;
   border-radius: 10px;
@@ -617,7 +617,6 @@ body {
 .pop-browse__wrap {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
 }
 
 .pop-browse__wrap-create {
