@@ -59,6 +59,7 @@ export const CardBtn = styled.div`
   height: 4px;
   border-radius: 50%;
   background-color: #94A6BE;
+  margin-left: 1px
 `
 export const CardContent = styled.div`
   height: 64px;
@@ -86,3 +87,8 @@ export const CardDateP = styled.div`
   color: #94A6BE;
   letter-spacing: 0.2px;
 `
+
+export const CardBtns = styled.div`
+  display: flex
+`
+

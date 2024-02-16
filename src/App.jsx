@@ -16,7 +16,7 @@ import { useTasks } from './hooks/useTasks'
 import ChangeCardPage from './pages/ChangeCardPage'
 
 function App() {
-	const [isAuth, setIsAuth] = useState(true);
+	const [isAuth, setIsAuth] = useState(false);
 	const {cards} = useTasks()
 
 	return (

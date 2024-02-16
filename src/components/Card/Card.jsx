@@ -1,4 +1,4 @@
-import { CardItem, CardTheme, CardThemeText, CardWrapper, CardGroup, CardBtn, CardContent, CardTitle, CardDate, CardDateP } from "./Card.styled"
+import { CardItem, CardTheme, CardThemeText, CardWrapper, CardGroup, CardBtn, CardContent, CardTitle, CardDate, CardDateP, CardBtns } from "./Card.styled"
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
 
@@ -19,22 +19,23 @@ function Card({name, theme, date, id}){
             <CardTheme $themeColor={color}>
                 <CardThemeText>{theme}</CardThemeText>
             </CardTheme>
-                <a>
-               
+            <Link to={`${appRoutes.CARD}/${id}`}>
+                <CardBtns>
                     <CardBtn>
-                        <div></div>
-                        <div></div>
-                        <div></div>
                     </CardBtn>
-                    </a>
+                    <CardBtn>
+                    </CardBtn>
+                    <CardBtn>
+                    </CardBtn>
+                </CardBtns>
+            </Link>
+            
             </CardGroup>
             <CardContent>
 
-            <Link to={`${appRoutes.CARD}/${id}`}>
                 <CardTitle>
                 <h3>{name}</h3>
                 </CardTitle>
-            </Link>
             {/* <a href={`card/${id}`}>
                 <CardTitle CardTitle>
                 <h3>{name}</h3>

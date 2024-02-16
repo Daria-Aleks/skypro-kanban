@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { themeStyles } from "../../lib/theme";
 
 export const ContainerSignIn = styled.div`
   display: block;
@@ -47,8 +48,9 @@ export const ModalInput = styled.input`
   min-width: 100%;
   border-radius: 8px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
-  outline: none;
   padding: 10px 8px;
+  margin-bottom: 10px
+}
 `
 export const ModalBtnEnter = styled.button`
   width: 100%;
@@ -74,4 +76,9 @@ export const ModalFormGroup = styled.div`
   font-weight: 400;
   line-height: 150%;
   letter-spacing: -0.14px;
+`
+
+export const NotCorrect = styled.div`
+  font-size: 14px;
+  color: red
 `

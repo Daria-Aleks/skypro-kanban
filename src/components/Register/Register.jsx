@@ -56,7 +56,7 @@ function Register (){
                             onChange={handleInputChange}
                             placeholder="Пароль"></ModalInput>
                         <ModalBtnSignUp type="button" onClick={createUser}>
-                            <a>Зарегистрироваться</a>
+                           <Link to={appRoutes.LOGIN}>Зарегистрироваться</Link>
                         </ModalBtnSignUp>
                         <ModalFormGroup>
                             <p>Уже есть аккаунт? <Link to={appRoutes.LOGIN}>Войдите здесь</Link></p>
