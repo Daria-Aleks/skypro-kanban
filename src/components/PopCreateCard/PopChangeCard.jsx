@@ -9,7 +9,7 @@ import { CardThemeText, CardTheme } from "../Card/Card.styled";
 import { useEffect } from "react";
 import { getTodos } from "../../api";
 import { deleteTodo } from "../../api";
-
+import { PopBrowseBlock, PopBrowseContainer, PopBrowseContent, PopBrowseForm, PopBrowseTopBlock, PopBrowseWrap, PopBrowsee, Status, StatusP, StatusThemes, Subttl, FormBrowseBlock, FormBrowseAreaEdit } from "./PopCreated.styled";
 function PopChangeCard(){
     const params = useParams();
     const [selected, setSelected] = useState(null);
@@ -53,9 +53,9 @@ function PopChangeCard(){
       setActiveStatus(card?.status)
       setForm({
         ...form,
-        'topic': card?.topic
+        'topic': card.topic
       })
-      console.log(card?.topic)
+      data.topic = card.topic
     }, [card])
 
     useEffect(() => {
@@ -110,19 +110,19 @@ function PopChangeCard(){
 
 
     return (
-    <div className="pop-browse" id="popBrowse">
-        <div className="pop-browse__container">
-            <div className="pop-browse__block">
-                <div className="pop-browse__content">
-                    <div className="pop-browse__top-block">
-                        <h3 className="pop-browse__ttl">Название задачи</h3>
+    <PopBrowsee>
+        <PopBrowseContainer>
+            <PopBrowseBlock>
+                <PopBrowseContent>
+                    <PopBrowseTopBlock>
+                        <Subttl>Название задачи</Subttl>
                         <CardTheme $themeColor={color}>
                           <CardThemeText>{card?.topic}</CardThemeText>
                         </CardTheme>
-                    </div>
-                    <div className="pop-browse__status status">
-                        <p className="status__p subttl">Статус</p>
-                        <div className="status__themes" >
+                    </PopBrowseTopBlock>
+                    <Status>
+                        <StatusP>Статус</StatusP>
+                        <StatusThemes>
                             <div className={activeStatus == 'Без статуса' ? active : notActive} onClick={() => handleClickChange("Без статуса")}>
                                 <p className={activeStatus == 'Без статуса' ? activeP : notActiveP}>Без статуса</p>
                             </div>
@@ -135,20 +135,19 @@ function PopChangeCard(){
                             <div className={activeStatus == 'Готово' ? active : notActive} onClick={() => handleClickChange("Готово")}>
                                 <p className={activeStatus == 'Готово' ? activeP : notActiveP}>Готово</p>
                             </div>
-                        </div>
-                    </div>
-                    <div className="pop-browse__wrap">
-                        <form className="pop-browse__form form-browse" id="formBrowseCard" action="#">									
-                            <div className="form-browse__block">
-                                <label htmlFor="textArea01" className="subttl">Описание задачи</label>
-                                <textarea 
-                                  className="form-browse__area" 
-                                  name="text" id="textArea01" 
+                        </StatusThemes>
+                    </Status>
+                    <PopBrowseWrap>
+                        <PopBrowseForm id="formBrowseCard" action="#">									
+                            <FormBrowseBlock>
+                                <Subttl>Описание задачи</Subttl>
+                                <FormBrowseAreaEdit 
+                                  name="text" 
                                   placeholder="Введите описание задачи..."
                                   onChange={handleInputChange}
-                                  ></textarea>
-                            </div>
-                        </form>
+                                  ></FormBrowseAreaEdit>
+                            </FormBrowseBlock>
+                        </PopBrowseForm>
                         <div className="pop-new-card__calendar calendar">
                             <p className="calendar__ttl subttl">Даты</p>
                             <div className="calendar__block">
@@ -168,13 +167,7 @@ function PopChangeCard(){
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="theme-down__categories theme-down">
-                        <p className="categories__p subttl">Категория</p>
-                        <div className="categories__theme _orange _active-category">
-                            <p className="_orange">Web Design</p>
-                        </div>
-                    </div>
+                    </PopBrowseWrap>
                     <div className="pop-browse__btn-edit">
                         <div className="btn-group">
                             <button className="btn-edit__edit _btn-bg _hover01" onClick={saveTask}><Link to={appRoutes.MAIN}>Сохранить</Link></button>
@@ -184,10 +177,10 @@ function PopChangeCard(){
                         <button className="btn-browse__close _btn-bg _hover01" type="button"><Link to={appRoutes.MAIN}>Закрыть</Link></button>
                     </div>
                                             
-                </div>
-            </div>
-        </div>
-    </div>
+                </PopBrowseContent>
+            </PopBrowseBlock>
+        </PopBrowseContainer>
+    </PopBrowsee>
     )
 }
 export default PopChangeCard

@@ -55,6 +55,7 @@ export async function createTodo(payload) {
 }
 
 export async function changeTodo(id, task) {
+  console.log(task)
   const responce = await fetch(`https://wedev-api.sky.pro/api/kanban/${id}`, {
     method: "PUT",
     headers: {

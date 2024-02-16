@@ -4,7 +4,7 @@ import { DayPicker } from 'react-day-picker';
 import { createTodo } from "../../api";
 import { useState } from "react";
 import 'react-day-picker/dist/style.css';
-import { PopBrowse, PopBrowseContainer, PopBrowseBlockCreate, PopBrowseContent, PopBrowseTopBlock, PopBrowseTtl, StatusTheme, CategoriesTheme } from "./PopCreated.styled";
+import { PopBrowsee, PopBrowseContainer, PopBrowseBlockCreate, PopBrowseContent, PopBrowseTopBlock, PopBrowseTtl, StatusTheme, CategoriesTheme } from "./PopCreated.styled";
 import { format } from "date-fns";
 import { getTodos } from "../../api";
 import { useTasks } from "../../hooks/useTasks";
@@ -47,7 +47,7 @@ function PopCreateCard(){
             })
     }
     return (
-    <PopBrowse>
+    <PopBrowsee>
         <PopBrowseContainer>
             <PopBrowseBlockCreate>
                 <PopBrowseContent>
@@ -112,7 +112,7 @@ function PopCreateCard(){
                 </PopBrowseContent>
             </PopBrowseBlockCreate>
         </PopBrowseContainer>
-    </PopBrowse>
+    </PopBrowsee>
     )
 }
 export default PopCreateCard

@@ -98,3 +98,16 @@ export const PopUserCheckbox = styled.input`
      -moz-appearance: none;
           appearance: none;
   `
+
+export const HeaderLogo = styled.div`
+  img {
+    width: 85px;
+  }
+`
+
+export const Hover03 = styled.div`
+  &:hover, &:hover a {
+    background-color: #33399b;
+    color: #FFFFFF;
+  }
+`

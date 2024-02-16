@@ -230,9 +230,9 @@
   "resolved" "https://registry.npmjs.org/@emotion/unitless/-/unitless-0.8.0.tgz"
   "version" "0.8.0"
 
-"@esbuild/darwin-x64@0.19.12":
-  "integrity" "sha512-hKoVkKzFiToTgn+41qGhsUJXFlIjxI/jSYeZf3ugemDYZldIXIxhvwN6erJGlX4t5h417iFuheZ7l+YVn05N3A=="
-  "resolved" "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.19.12.tgz"
+"@esbuild/darwin-arm64@0.19.12":
+  "integrity" "sha512-B6IeSgZgtEzGC42jsI+YYu9Z3HKRxp8ZT3cqhvliEHovq8HSX2YX8lNocDn79gCKJXOSaEot9MVYky7AKjCs8g=="
+  "resolved" "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.19.12.tgz"
   "version" "0.19.12"
 
 "@eslint-community/eslint-utils@^4.2.0":
@@ -344,9 +344,9 @@
   "resolved" "https://registry.npmjs.org/@remix-run/router/-/router-1.15.0.tgz"
   "version" "1.15.0"
 
-"@rollup/rollup-darwin-x64@4.9.6":
-  "integrity" "sha512-zRDtdJuRvA1dc9Mp6BWYqAsU5oeLixdfUvkTHuiYOHwqYuQ4YgSmi6+/lPvSsqc/I0Omw3DdICx4Tfacdzmhog=="
-  "resolved" "https://registry.npmjs.org/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.9.6.tgz"
+"@rollup/rollup-darwin-arm64@4.9.6":
+  "integrity" "sha512-CqNNAyhRkTbo8VVZ5R85X73H3R5NX9ONnKbXuHisGWC0qRbTTxnF1U4V9NafzJbgGM0sHZpdO83pLPzq8uOZFw=="
+  "resolved" "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.9.6.tgz"
   "version" "4.9.6"
 
 "@types/babel__core@^7.20.5":
