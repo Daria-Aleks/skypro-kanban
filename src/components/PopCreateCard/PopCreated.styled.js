@@ -402,3 +402,20 @@ export const BtnBg = styled.button`
     background-color: #33399b;
   }
 `
+
+export const PopBrowseBtnEdit = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  button {
+    height: 30px;
+    margin-bottom: 10px;
+    padding: 0 14px;
+  }
+`
+
+export const PopBrowseWrapCreate = styled.div`
+  display: flex;
+  align-items: flex-start;
+`

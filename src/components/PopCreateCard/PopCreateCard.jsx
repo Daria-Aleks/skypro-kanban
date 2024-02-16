@@ -4,7 +4,7 @@ import { DayPicker } from 'react-day-picker';
 import { createTodo } from "../../api";
 import { useState } from "react";
 import 'react-day-picker/dist/style.css';
-import { PopBrowsee, PopBrowseContainer, PopBrowseBlockCreate, PopBrowseContent, PopBrowseTopBlock, PopBrowseTtl, StatusTheme, CategoriesTheme } from "./PopCreated.styled";
+import { PopBrowsee, PopBrowseContainer, PopBrowseBlockCreate, PopBrowseContent, PopBrowseTopBlock, PopBrowseTtl, StatusTheme, CategoriesTheme, Status, PopBrowseWrapCreate, Subttl, PopBrowseBtnBrowse, BtnGroup, BtnBg } from "./PopCreated.styled";
 import { format } from "date-fns";
 import { getTodos } from "../../api";
 import { useTasks } from "../../hooks/useTasks";
@@ -54,7 +54,7 @@ function PopCreateCard(){
                     <PopBrowseTopBlock>
                         <PopBrowseTtl>Создание задачи</PopBrowseTtl>
                     </PopBrowseTopBlock>
-                    <div className="pop-browse__status status">
+                    <Status>
                         <p className="status__p subttl">Название задачи</p>
                         <div className="status__themes">
                             <input 
@@ -66,8 +66,8 @@ function PopCreateCard(){
                                 >
                                 </input>
                         </div>
-                    </div>
-                    <div className="pop-browse__wrap-create">
+                    </Status>
+                    <PopBrowseWrapCreate>
                         <form className="pop-browse__form form-browse" id="formBrowseCard" action="#">									
                             <div className="form-browse__block">
                                 <label htmlFor="textArea01" className="subttl">Описание задачи</label>
@@ -91,12 +91,12 @@ function PopCreateCard(){
                                 </div>
                             </div>
                         </div>
+                    </PopBrowseWrapCreate>
+                    <div>
+                        <Subttl>Категория</Subttl>
                     </div>
-                    <div className="theme-down__categories theme-down">
-                        <p className="categories__p subttl">Категория</p>
-                    </div>
-                    <div className="pop-browse__btn-browse ">
-                        <div className="btn-group flex">
+                    <PopBrowseBtnBrowse>
+                        <BtnGroup>
                             <input type="radio" id="radio1" value="Web Design" name="topic" onChange={handleInputChange}/>
                             <label>Web Design</label>
 
@@ -105,9 +105,9 @@ function PopCreateCard(){
                             
                             <input type="radio" id="radio3" value="Copywriting" name="topic" onChange={handleInputChange}/>
                             <label>Copywriting</label>
-                        </div>
-                        <button className="btn-browse__close _btn-bg _hover01" type="button" onClick={createTodoFunc}><Link to={appRoutes.MAIN}>Создать задачу</Link></button>
-                    </div>
+                        </BtnGroup>
+                        <BtnBg type="button" onClick={createTodoFunc}><Link to={appRoutes.MAIN}>Создать задачу</Link></BtnBg>
+                    </PopBrowseBtnBrowse>
                                             
                 </PopBrowseContent>
             </PopBrowseBlockCreate>

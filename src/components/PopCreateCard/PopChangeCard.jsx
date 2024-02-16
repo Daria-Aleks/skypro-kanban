@@ -9,7 +9,7 @@ import { CardThemeText, CardTheme } from "../Card/Card.styled";
 import { useEffect } from "react";
 import { getTodos } from "../../api";
 import { deleteTodo } from "../../api";
-import { PopBrowseBlock, PopBrowseContainer, PopBrowseContent, PopBrowseForm, PopBrowseTopBlock, PopBrowseWrap, PopBrowsee, Status, StatusP, StatusThemes, Subttl, FormBrowseBlock, FormBrowseAreaEdit } from "./PopCreated.styled";
+import { PopBrowseBlock, PopBrowseContainer, PopBrowseContent, PopBrowseForm, PopBrowseTopBlock, PopBrowseWrap, PopBrowsee, Status, StatusP, StatusThemes, Subttl, FormBrowseBlock, FormBrowseAreaEdit, PopBrowseBtnEdit, BtnGroup, BtnBg, BtnBor } from "./PopCreated.styled";
 function PopChangeCard(){
     const params = useParams();
     const [selected, setSelected] = useState(null);
@@ -148,10 +148,10 @@ function PopChangeCard(){
                                   ></FormBrowseAreaEdit>
                             </FormBrowseBlock>
                         </PopBrowseForm>
-                        <div className="pop-new-card__calendar calendar">
-                            <p className="calendar__ttl subttl">Даты</p>
-                            <div className="calendar__block">
-                                <div className="calendar__content">
+                        <div>
+                            <Subttl>Даты</Subttl>
+                            <div>
+                                <div>
 
                                 <DayPicker 
                                   mode="single"
@@ -162,21 +162,20 @@ function PopChangeCard(){
                                 </div>
                         
                                 <input type="hidden" id="datepick_value" value="08.09.2023" />
-                                <div className="calendar__period">
-                                    <p className="calendar__p date-end">Срок исполнения: <span className="date-control">{format(card?.date || new Date(), 'PP')}</span></p>
+                                <div>
+                                    <p>Срок исполнения: <span className="date-control">{format(card?.date || new Date(), 'PP')}</span></p>
                                 </div>
                             </div>
                         </div>
                     </PopBrowseWrap>
-                    <div className="pop-browse__btn-edit">
-                        <div className="btn-group">
-                            <button className="btn-edit__edit _btn-bg _hover01" onClick={saveTask}><Link to={appRoutes.MAIN}>Сохранить</Link></button>
-                            <button className="btn-edit__edit _btn-bor _hover03"><Link to={appRoutes.MAIN}>Отменить</Link></button>
-                            <button className="btn-edit__delete _btn-bor _hover03" id="btnDelete" onClick={deleteTask}><Link to={appRoutes.MAIN}>Удалить задачу</Link></button>
-                        </div>
-                        <button className="btn-browse__close _btn-bg _hover01" type="button"><Link to={appRoutes.MAIN}>Закрыть</Link></button>
-                    </div>
-                                            
+                    <PopBrowseBtnEdit>
+                        <BtnGroup>
+                            <BtnBg onClick={saveTask}><Link to={appRoutes.MAIN}>Сохранить</Link></BtnBg>
+                            <BtnBor><Link to={appRoutes.MAIN}>Отменить</Link></BtnBor>
+                            <BtnBor onClick={deleteTask}><Link to={appRoutes.MAIN}>Удалить задачу</Link></BtnBor>
+                        </BtnGroup>
+                        <BtnBg type="button"><Link to={appRoutes.MAIN}>Закрыть</Link></BtnBg>
+                    </PopBrowseBtnEdit>                   
                 </PopBrowseContent>
             </PopBrowseBlock>
         </PopBrowseContainer>
