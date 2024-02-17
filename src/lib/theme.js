@@ -15,4 +15,26 @@ export const themeStyles = {
       backgroundColor: "#94a6be",
       color: "#ffffff",
     },
+    _lPurple: {
+      backgroundColor: "#f7eeff",
+      color: "#d6b6fa"
+    },
+    _lOrange: {
+      backgroundColor: "#ffe4cf",
+      color: "#ffc091",
+    },
+    _lGreen: {
+      backgroundColor: "#e0ffed",
+      color: "#9be0c4",
+    },
+  };
+
+
+  export const displays = {
+    flex: {
+      display: 'flex',
+    },
+    block: {
+      display: 'block',
+    },
   };

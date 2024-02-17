@@ -26,6 +26,12 @@ export const CardThemeText = styled.p`
   line-height: 10px;
 `;
 
+export const CardThemeTextDesk = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+`;
+
 export const CardTheme = styled.div`
   width: auto;
   height: 20px;
@@ -35,6 +41,22 @@ export const CardTheme = styled.div`
     themeStyles[$themeColor]?.backgroundColor || "#b4fdd1"};
 
   ${CardThemeText} {
+    color: ${({ $themeColor }) => themeStyles[$themeColor]?.color || "#06b16e"};
+  }
+`;
+
+export const CardThemeDesk = styled.div`
+  width: auto;
+  height: 30px;
+  padding: 5px 14px;
+  border-radius: 18px;
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
+  background-color: ${({ $themeColor }) =>
+    themeStyles[$themeColor]?.backgroundColor || "#b4fdd1"};
+
+  ${CardThemeTextDesk} {
     color: ${({ $themeColor }) => themeStyles[$themeColor]?.color || "#06b16e"};
   }
 `;

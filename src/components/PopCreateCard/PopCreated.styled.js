@@ -112,7 +112,7 @@ export const PopExitExitNo = styled.button`
   height: 30px;
   background-color: transparent;
   border-radius: 4px;
-  border: 0.7px solid var(--palette-navy-60, #565EEF);
+  border: 1px solid var(--palette-navy-60, #565EEF);
   outline: none;
   display: flex;
   align-items: center;
@@ -122,10 +122,14 @@ export const PopExitExitNo = styled.button`
   font-weight: 500;
   letter-spacing: -0.14px;
   color: #FFFFFF;
+  a {
+    color: #565EEF;
+  }
   &:hover, &:hover a{
     background-color: #33399b;
     background-color: #33399b;
     color: #FFFFFF;
+    border: 1px solid var(--palette-navy-60,  #33399b);
   }
 `
 
@@ -248,9 +252,22 @@ export const FormNewCreate = styled.button`
 
 export const Subttl = styled.label`
   color: #000;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1;
+`
+
+export const SubttlD = styled.label`
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  margin-left: 20px
+`
+
+export const SubttlWrapp = styled.label`
+  height: 20px;
+  display: block
 `
 
 export const categories = styled.div`
@@ -263,6 +280,14 @@ export const categories = styled.div`
 
 export const categories__p = styled.p`
   margin-bottom: 14px;
+`
+
+export const PDate = styled.p`
+  font-size: 12px;
+  color: gray;
+  span {
+    color: black
+  }
 `
 
 export const categories__theme = styled.div`
@@ -279,7 +304,7 @@ export const PopBrowseBlock = styled.div`
   display: block;
   margin: 0 auto;
   background-color: #FFFFFF;
-  max-width: 730px;
+  max-width: 690px;
   width: 100%;
   padding: 40px 30px 38px;
   border-radius: 10px;
@@ -314,6 +339,7 @@ export const Gray = styled.div`
 export const PopBrowseWrap = styled.div`
   display: flex;
   align-items: flex-start;
+  justify-content: space-between
 `
 
 export const PopBrowseForm = styled.form`

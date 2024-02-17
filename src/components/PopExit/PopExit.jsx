@@ -4,7 +4,7 @@ import { appRoutes } from "../../lib/appRoutes"
 import { useUser } from "../../hooks/useUser"
 import { PopExitExitNo, PopExitExitYes } from "../PopCreateCard/PopCreated.styled"
 
-function PopExit({setIsAuth}){
+function PopExit(){
     const {logoutUser} = useUser()
 
     function exit() {

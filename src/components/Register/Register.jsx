@@ -1,5 +1,5 @@
 import { Wrapper } from "../Common/Common.styled";
-import { ModalFormGroup, ModalInput, ModalLogin } from "../Login/Login.styled";
+import { ModalFormGroup, ModalInput, ModalLogin, RegHere } from "../Login/Login.styled";
 import { ContainerSignUp, ModalBlockTtlUp, ModalBtnSignUp, SignUpModal, SignUpModalBlock } from "./Register.styled";
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
@@ -58,8 +58,11 @@ function Register (){
                         <ModalBtnSignUp type="button" onClick={createUser}>
                            <Link to={appRoutes.LOGIN}>Зарегистрироваться</Link>
                         </ModalBtnSignUp>
-                        <ModalFormGroup>
-                            <p>Уже есть аккаунт? <Link to={appRoutes.LOGIN}>Войдите здесь</Link></p>
+                        <ModalFormGroup $themeColor={"flex"}>
+                            <p>Уже есть аккаунт?</p>
+                            <RegHere>
+                                <Link to={appRoutes.LOGIN}>Войдите здесь</Link>
+                            </RegHere>
                         </ModalFormGroup>
                     </ModalLogin>
                     </SignUpModalBlock>

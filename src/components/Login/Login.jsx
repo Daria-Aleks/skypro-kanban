@@ -1,11 +1,11 @@
-import { ContainerSignIn, Modal, ModalBlock, ModalBtnEnter, ModalFormGroup, ModalInput, ModalLogin, ModalTtl, NotCorrect } from "./Login.styled";
+import { ContainerSignIn, Modal, ModalBlock, ModalBtnEnter, ModalFormGroup, ModalInput, ModalLogin, ModalTtl, NotCorrect, RegHere } from "./Login.styled";
 import { Wrapper } from "../Common/Common.styled";
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
 import { useState } from "react";
 import { auth } from "../../api";
 import { useUser } from "../../hooks/useUser";
-function Login({setIsAuth, setUser}){
+function Login(){
 
     const formFields = {
         login: "",
@@ -74,7 +74,7 @@ function Login({setIsAuth, setUser}){
                     </ModalBtnEnter>
                     <ModalFormGroup>
                         <p>Нужно зарегистрироваться?</p>
-                        <Link to={appRoutes.REGISTER}>Регистрируйтесь здесь</Link>
+                       <RegHere $themeColor="flex"><Link to={appRoutes.REGISTER}>Регистрируйтесь здесь</Link></RegHere>
                     </ModalFormGroup>
                 </ModalLogin>
             </ModalBlock>

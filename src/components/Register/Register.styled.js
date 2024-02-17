@@ -52,4 +52,7 @@ export const ModalBtnSignUp = styled.button`
   font-weight: 500;
   letter-spacing: -0.14px;
   color: #FFFFFF;
+  a {
+    color: #FFFFFF;
+  }
 `

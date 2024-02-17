@@ -1,6 +1,7 @@
 import { CardItem, CardTheme, CardThemeText, CardWrapper, CardGroup, CardBtn, CardContent, CardTitle, CardDate, CardDateP, CardBtns } from "./Card.styled"
 import { Link } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
+import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 
 function Card({name, theme, date, id}){
     let color;
@@ -54,7 +55,7 @@ function Card({name, theme, date, id}){
                             </defs>
                         </svg>
                         <CardDateP>
-                          <p>{date}</p>  
+                          <p>{format(date, "MM.dd.yy")}</p>  
                         </CardDateP>
                     </CardDate>
                     

@@ -1,12 +1,11 @@
 import { Link, useParams } from "react-router-dom"
 import { appRoutes } from "../../lib/appRoutes"
 import { useState } from "react";
-import { set } from "date-fns";
 import { DayPicker } from 'react-day-picker';
 import { format } from "date-fns";
 import { useTasks } from "../../hooks/useTasks";
-import { CardThemeText, CardTheme } from "../Card/Card.styled";
-import { PopBrowsee } from "../PopCreateCard/PopCreated.styled";
+import { CardThemeTextDesk, CardThemeDesk } from "../Card/Card.styled";
+import { PDate, PopBrowsee, SubttlD } from "../PopCreateCard/PopCreated.styled";
 import { useEffect } from "react";
 import { deleteTodo } from "../../api";
 import { getTodos } from "../../api";
@@ -18,7 +17,16 @@ function PopBrowse(){
     let color;
     const [selected, setSelected] = useState(null);
     const {getCards} = useTasks()
-
+    const css = `
+    .rdp {
+        --rdp-cell-size: 30px;
+        color: gray;
+    }
+    .rdp-cell {
+        font-size: 13px
+    }
+  `;
+  
     useEffect(() => {
         setSelected(selected)
       }, [selected])
@@ -59,9 +67,9 @@ function PopBrowse(){
                 <PopBrowseContent>
                     <PopBrowseTopBlock>
                         <PopBrowseTtl>Название задачи</PopBrowseTtl>
-                        <CardTheme $themeColor={color}>
-                          <CardThemeText>{card?.topic}</CardThemeText>
-                        </CardTheme>
+                        <CardThemeDesk $themeColor={color}>
+                          <CardThemeTextDesk>{card?.topic}</CardThemeTextDesk>
+                        </CardThemeDesk>
                     </PopBrowseTopBlock>
                     <Status>
                         <StatusP>Статус</StatusP>
@@ -79,9 +87,10 @@ function PopBrowse(){
                             </FormBrowseBlock>
                         </PopBrowseForm>
                         <div>
-                            <Subttl>Даты</Subttl>
+                            <SubttlD>Даты</SubttlD>
                             <div>
                                 <div>
+                                    <style>{css}</style>
                                     <DayPicker 
                                     mode="single"
                                     selected={selected}
@@ -90,7 +99,7 @@ function PopBrowse(){
                         
                                 <input type="hidden" id="datepick_value" value="08.09.2023" />
                                 <div>
-                                    <p>Срок исполнения: <span>{format(card?.date || new Date(), "PP")}</span></p>
+                                    <PDate>Срок исполнения: <span>{format(card?.date || new Date(), "dd.mm.yy")}</span></PDate>
                                 </div>
                             </div>
                         </div>

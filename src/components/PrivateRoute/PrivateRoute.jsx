@@ -4,7 +4,8 @@ import { useUser } from "../../hooks/useUser";
 import { useState } from "react";
 
 export default function PrivateRoute() {
-  const [user, setUser]= useState('user');
-  // console.log(user, 'user')
+  const {user} = useUser();
+  // const [user, setUser]= useState('user');
+
   return user ? <Outlet/> : <Navigate to={appRoutes.MAIN}/>
 }

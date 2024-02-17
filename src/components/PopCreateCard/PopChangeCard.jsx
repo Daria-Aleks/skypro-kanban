@@ -5,16 +5,25 @@ import { format } from "date-fns";
 import { DayPicker } from 'react-day-picker';
 import { changeTodo } from "../../api";
 import { useTasks } from "../../hooks/useTasks";
-import { CardThemeText, CardTheme } from "../Card/Card.styled";
+import { CardThemeDesk, CardThemeTextDesk } from "../Card/Card.styled";
 import { useEffect } from "react";
 import { getTodos } from "../../api";
 import { deleteTodo } from "../../api";
-import { PopBrowseBlock, PopBrowseContainer, PopBrowseContent, PopBrowseForm, PopBrowseTopBlock, PopBrowseWrap, PopBrowsee, Status, StatusP, StatusThemes, Subttl, FormBrowseBlock, FormBrowseAreaEdit, PopBrowseBtnEdit, BtnGroup, BtnBg, BtnBor } from "./PopCreated.styled";
+import { PopBrowseBlock, PopBrowseContainer, PopBrowseContent, PopBrowseForm, PopBrowseTopBlock, PopBrowseWrap, PopBrowsee, Status, StatusP, StatusThemes, Subttl, FormBrowseBlock, FormBrowseAreaEdit, PopBrowseBtnEdit, BtnGroup, BtnBg, BtnBor, PDate, SubttlD } from "./PopCreated.styled";
 function PopChangeCard(){
     const params = useParams();
     const [selected, setSelected] = useState(null);
     const {cards} = useTasks();
     const {getCards} = useTasks()
+    const css = `
+    .rdp {
+        --rdp-cell-size: 30px;
+        color: gray;
+    }
+    .rdp-cell {
+        font-size: 13px
+    }
+  `;
     let card = null;
     let data = {
         "title": card?.title,
@@ -26,7 +35,7 @@ function PopChangeCard(){
     const [form, setForm] = useState(data)
     const [activeStatus, setActiveStatus] = useState(null)
     let color;
-    let footer = <p>Please pick a day.</p>;
+    let footer = <PDate>Please pick a day.</PDate>;
     let active = "status__theme _gray"
     let notActive = "status__theme"
     let activeP = '_gray'
@@ -66,7 +75,7 @@ function PopChangeCard(){
     }, [selected])
 
     if (selected) {
-      footer = <p>You picked {format(selected, 'PP')}.</p>;
+      footer = <PDate>You picked {format(selected, 'PP')}.</PDate>;
       card.date = format(selected, 'PP')
     }
 
@@ -116,9 +125,9 @@ function PopChangeCard(){
                 <PopBrowseContent>
                     <PopBrowseTopBlock>
                         <Subttl>Название задачи</Subttl>
-                        <CardTheme $themeColor={color}>
-                          <CardThemeText>{card?.topic}</CardThemeText>
-                        </CardTheme>
+                        <CardThemeDesk $themeColor={color}>
+                          <CardThemeTextDesk>{card?.topic}</CardThemeTextDesk>
+                        </CardThemeDesk>
                     </PopBrowseTopBlock>
                     <Status>
                         <StatusP>Статус</StatusP>
@@ -149,10 +158,10 @@ function PopChangeCard(){
                             </FormBrowseBlock>
                         </PopBrowseForm>
                         <div>
-                            <Subttl>Даты</Subttl>
+                            <SubttlD>Даты</SubttlD>
                             <div>
                                 <div>
-
+                                <style>{css}</style>
                                 <DayPicker 
                                   mode="single"
                                   selected={selected}
@@ -163,7 +172,7 @@ function PopChangeCard(){
                         
                                 <input type="hidden" id="datepick_value" value="08.09.2023" />
                                 <div>
-                                    <p>Срок исполнения: <span className="date-control">{format(card?.date || new Date(), 'PP')}</span></p>
+                                    <PDate>Срок исполнения: <span className="date-control">{format(card?.date || new Date(), 'dd.mm.yy')}</span></PDate>
                                 </div>
                             </div>
                         </div>

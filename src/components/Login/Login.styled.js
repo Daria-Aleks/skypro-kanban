@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { themeStyles } from "../../lib/theme";
+import { themeStyles, displays } from "../../lib/theme";
 
 export const ContainerSignIn = styled.div`
   display: block;
@@ -68,7 +68,9 @@ export const ModalBtnEnter = styled.button`
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color: #FFFFFF;
+  p {
+    color: #FFFFFF
+  }
 `
 export const ModalFormGroup = styled.div`
   color: rgba(148, 166, 190, 0.4);
@@ -76,9 +78,17 @@ export const ModalFormGroup = styled.div`
   font-weight: 400;
   line-height: 150%;
   letter-spacing: -0.14px;
+  display: ${({ $themeColor }) =>
+  displays[$themeColor]?.display || "block"};
 `
 
 export const NotCorrect = styled.div`
   font-size: 14px;
   color: red
+`
+export const RegHere = styled.p`
+  text-decoration: underline;
+  a {
+    color: rgba(148, 166, 190, 0.4);
+  }
 `
